@@ -10,15 +10,20 @@ class UsersController < ApplicationController
   end
 
   def show_users
-    _params = ActiveSupport::JSON.decode(params[:data])
-
-    start = _params['start'] ? _params['start'] : 0
+    start = 0
+    if params[:data]
+      _params = ActiveSupport::JSON.decode(params[:data])
+      start = _params['start']
+    end
 
     @users = User.all.includes(:roles).where.not(:roles => { :hide => 1 } ).limit(ROWS).offset(start)
 
+    render 'index'
+=begin
     respond_to do |format|
       format.json { render :json => @users.to_json, :status => :ok}
     end
+=end
   end
 
   # GET /users/1

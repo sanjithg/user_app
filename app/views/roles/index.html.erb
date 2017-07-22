@@ -90,6 +90,8 @@
     };
 
     function showUsers() {
+        document.location = "users/show_users";
+
         ajaxCall("/users/show_users", { 'start' : 0 }, {
             type: "POST",
             success: function(response) {
@@ -102,7 +104,6 @@
     };
 
     function renderData(response) {
-        //document.location = "users/show_users"
         //alert(JSON.stringify(response));
     }
 

@@ -8,7 +8,7 @@ UserApp::Application.routes.draw do
 
   resources :users do
     collection do
-      post 'show_users'
+      get 'show_users'
     end
   end
 
